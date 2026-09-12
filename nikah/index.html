@@ -318,9 +318,20 @@
         color: var(--emerald);
         line-height: 1.05;
         margin: 18px 0 8px;
+        padding: 0 4px;
+        word-break: normal;
+        overflow-wrap: break-word;
     }
-    .name-bride { font-size: 68px; }
-    .name-groom { font-size: 62px; }
+    .name-bride { font-size: clamp(44px, 12vw, 68px); }
+    .name-groom { font-size: clamp(32px, 9vw, 62px); }
+    .floral-spray {
+        display: block;
+        margin: 14px auto 4px;
+        width: min(340px, 82%);
+        height: auto;
+        opacity: .9;
+    }
+    .floral-spray.flip { transform: rotate(180deg); margin: 6px auto 14px; }
     .weds {
         display: block;
         font-family: 'Cormorant Garamond', serif;
@@ -554,13 +565,21 @@
     .card-wrap.show ~ .replay { display: inline-flex; }
 
     @media (max-width: 560px) {
-        .inner { padding: 55px 28px; }
-        .name-bride { font-size: 54px; }
-        .name-groom { font-size: 48px; }
+        .inner { padding: 55px 22px; }
         .ayah { font-size: 20px; }
         .bismillah { font-size: 26px; }
         .cd-num { font-size: 22px; }
         .countdown { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+        .actions .btn { padding: 10px 14px; font-size: 10px; letter-spacing: 2px; }
+    }
+    @media (max-width: 380px) {
+        .inner { padding: 45px 16px; }
+        .card::before { inset: 12px; }
+        .card::after  { inset: 18px; }
+        .corner { width: 60px; height: 60px; top: 16px; }
+        .corner.bl, .corner.br { bottom: 16px; top: auto; }
+        .corner.tr, .corner.br { right: 16px; }
+        .corner.tl, .corner.bl { left: 16px; }
     }
 
     @media print {
@@ -622,6 +641,40 @@
                     <span class="name-groom">Mohd. Ashhar Ullah</span>
                 </div>
                 <p class="son-of">(S/o. Late Mohd. Hidayat Ullah)</p>
+
+                <!-- Floral spray -->
+                <svg class="floral-spray" viewBox="0 0 300 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <g fill="none" stroke="#b8894a" stroke-width="1" stroke-linecap="round">
+                        <path d="M150 30 Q 120 22 90 28 Q 60 34 30 24"/>
+                        <path d="M150 30 Q 180 22 210 28 Q 240 34 270 24"/>
+                        <path d="M150 30 Q 140 44 120 50"/>
+                        <path d="M150 30 Q 160 44 180 50"/>
+                    </g>
+                    <g fill="#b8894a" opacity="0.85">
+                        <circle cx="150" cy="30" r="5"/>
+                        <circle cx="90" cy="28" r="3.2"/>
+                        <circle cx="30" cy="24" r="2.8"/>
+                        <circle cx="210" cy="28" r="3.2"/>
+                        <circle cx="270" cy="24" r="2.8"/>
+                        <circle cx="120" cy="50" r="2.4"/>
+                        <circle cx="180" cy="50" r="2.4"/>
+                    </g>
+                    <g fill="#d4af6a" opacity="0.7">
+                        <circle cx="150" cy="30" r="2"/>
+                        <ellipse cx="60" cy="30" rx="5" ry="2" transform="rotate(-20 60 30)"/>
+                        <ellipse cx="240" cy="30" rx="5" ry="2" transform="rotate(20 240 30)"/>
+                        <ellipse cx="135" cy="42" rx="4" ry="1.6" transform="rotate(-30 135 42)"/>
+                        <ellipse cx="165" cy="42" rx="4" ry="1.6" transform="rotate(30 165 42)"/>
+                    </g>
+                    <g fill="#5a7a4a" opacity="0.6">
+                        <ellipse cx="75" cy="32" rx="5" ry="2.2" transform="rotate(-25 75 32)"/>
+                        <ellipse cx="105" cy="26" rx="5" ry="2.2" transform="rotate(15 105 26)"/>
+                        <ellipse cx="45" cy="22" rx="5" ry="2.2" transform="rotate(-15 45 22)"/>
+                        <ellipse cx="225" cy="32" rx="5" ry="2.2" transform="rotate(25 225 32)"/>
+                        <ellipse cx="195" cy="26" rx="5" ry="2.2" transform="rotate(-15 195 26)"/>
+                        <ellipse cx="255" cy="22" rx="5" ry="2.2" transform="rotate(15 255 22)"/>
+                    </g>
+                </svg>
             </section>
 
             <div class="ornament"><span class="line"></span><span class="icon">❁</span><span class="line"></span></div>
