@@ -723,7 +723,7 @@
                     <div class="scratch-reveal">
                         <div class="big-date">18 November 2026</div>
                         <div class="hijri">8 Jumada al-Thani 1448 AH</div>
-                        <div class="after">Waleema Reception</div>
+                        <div class="after">Evening · 8:00 PM onwards</div>
                     </div>
                 </div>
 
@@ -761,11 +761,10 @@
             <section class="section">
                 <p class="prog-title">Programme</p>
                 <div class="prog-list">
-                    <div class="prog-row"><span class="time">12:30 PM</span><span>Guest Welcome</span></div>
-                    <div class="prog-row"><span class="time">01:00 PM</span><span>Waleema Reception</span></div>
-                    <div class="prog-row"><span class="time">01:30 PM</span><span>Dawat-e-Waleema (Lunch)</span></div>
-                    <div class="prog-row"><span class="time">03:00 PM</span><span>Dua &amp; Blessings</span></div>
-                    <div class="prog-row"><span class="time">03:30 PM</span><span>Rukhsati</span></div>
+                    <div class="prog-row"><span class="time">08:00 PM</span><span>Guest Welcome</span></div>
+                    <div class="prog-row"><span class="time">08:30 PM</span><span>Waleema Reception</span></div>
+                    <div class="prog-row"><span class="time">09:00 PM</span><span>Dawat-e-Waleema (Dinner)</span></div>
+                    <div class="prog-row"><span class="time">10:30 PM</span><span>Dua &amp; Blessings</span></div>
                 </div>
                 <p class="dress-code">✲ Traditional attire · Soft pastels ✲</p>
             </section>
@@ -873,8 +872,8 @@
     }, 2500);
 
     // ---------- Countdown ----------
-    // Waleema reception on 18 Nov 2026, 1:00 PM IST.
-    const target = new Date('2026-11-18T13:00:00+05:30').getTime();
+    // Waleema reception on 18 Nov 2026, 8:00 PM IST.
+    const target = new Date('2026-11-18T20:00:00+05:30').getTime();
     const cdD = document.getElementById('cdD');
     const cdH = document.getElementById('cdH');
     const cdM = document.getElementById('cdM');
@@ -895,8 +894,8 @@
 
     // ---------- Add to Calendar (Google) ----------
     const calBtn = document.getElementById('calBtn');
-    const start = '20261118T073000Z'; // 13:00 IST = 07:30 UTC
-    const end   = '20261118T103000Z';
+    const start = '20261118T143000Z'; // 20:00 IST = 14:30 UTC
+    const end   = '20261118T170000Z'; // 22:30 IST = 17:00 UTC
     const calUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
         + '&text=' + encodeURIComponent('Waleema — Shaista & Mohd. Ashhar Ullah')
         + '&dates=' + start + '/' + end
