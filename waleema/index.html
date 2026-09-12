@@ -719,17 +719,13 @@
             <div class="ornament"><span class="line"></span><span class="icon">❁</span><span class="line"></span></div>
 
             <section class="section">
-                <p class="scratch-title">A little surprise awaits</p>
-                <p class="scratch-sub">Scratch to reveal our special day</p>
-                <div class="scratch-wrap" id="scratchWrap">
+                <div class="scratch-wrap">
                     <div class="scratch-reveal">
                         <div class="big-date">18 November 2026</div>
                         <div class="hijri">8 Jumada al-Thani 1448 AH</div>
                         <div class="after">Waleema Reception</div>
                     </div>
-                    <canvas id="scratchCanvas"></canvas>
                 </div>
-                <p class="scratch-hint" id="scratchHint">✲ Drag across to reveal ✲</p>
 
                 <div class="countdown" id="countdown" aria-label="Countdown to the Waleema">
                     <div class="cd-box"><div class="cd-num" id="cdD">--</div><div class="cd-lbl">Days</div></div>
@@ -833,7 +829,6 @@
         cardWrap.setAttribute('aria-hidden','true');
         envelope.classList.remove('opened','animate-open');
         document.querySelectorAll('.section').forEach(s => s.classList.remove('visible'));
-        resetScratch();
         window.scrollTo({top:0, behavior:'instant'});
     });
 
@@ -876,79 +871,6 @@
     setInterval(() => {
         if (cardWrap.classList.contains('show')) spawnPetals(2);
     }, 2500);
-
-    // ---------- Scratch ----------
-    const canvas = document.getElementById('scratchCanvas');
-    const wrap   = document.getElementById('scratchWrap');
-    let ctx, scratching = false, revealed = false;
-
-    function initScratch() {
-        const rect = wrap.getBoundingClientRect();
-        const dpr = window.devicePixelRatio || 1;
-        canvas.width  = rect.width  * dpr;
-        canvas.height = rect.height * dpr;
-        ctx = canvas.getContext('2d');
-        ctx.scale(dpr, dpr);
-
-        // Gold gradient cover
-        const g = ctx.createLinearGradient(0,0,rect.width,rect.height);
-        g.addColorStop(0, '#d4af6a');
-        g.addColorStop(.5, '#b8894a');
-        g.addColorStop(1, '#8a6432');
-        ctx.fillStyle = g;
-        ctx.fillRect(0,0,rect.width,rect.height);
-
-        // Text overlay
-        ctx.fillStyle = 'rgba(255,240,200,.85)';
-        ctx.font = '600 14px Montserrat, sans-serif';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        const txt = 'SCRATCH HERE';
-        ctx.fillText(txt, rect.width/2, rect.height/2);
-        ctx.font = '400 11px Montserrat, sans-serif';
-        ctx.fillText('✧  ✧  ✧', rect.width/2, rect.height/2 + 22);
-
-        ctx.globalCompositeOperation = 'destination-out';
-    }
-    function scratchAt(e) {
-        const rect = canvas.getBoundingClientRect();
-        const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
-        const y = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
-        ctx.beginPath();
-        ctx.arc(x, y, 28, 0, Math.PI*2);
-        ctx.fill();
-    }
-    function checkRevealed() {
-        if (revealed) return;
-        const rect = canvas.getBoundingClientRect();
-        const img = ctx.getImageData(0,0,canvas.width,canvas.height).data;
-        let clear = 0;
-        for (let i=3; i<img.length; i+=4*40) if (img[i] === 0) clear++;
-        const ratio = clear / (img.length/(4*40));
-        if (ratio > 0.5) {
-            revealed = true;
-            canvas.style.transition = 'opacity .6s ease';
-            canvas.style.opacity = '0';
-            setTimeout(()=> canvas.style.display='none', 700);
-            const hint = document.getElementById('scratchHint');
-            if (hint) { hint.style.transition = 'opacity .5s ease'; hint.style.opacity = '0'; setTimeout(()=> hint.style.display = 'none', 500); }
-            spawnPetals(20);
-        }
-    }
-    function resetScratch() {
-        revealed = false;
-        canvas.style.display = '';
-        canvas.style.opacity = '1';
-        const hint = document.getElementById('scratchHint');
-        if (hint) { hint.style.display = ''; hint.style.opacity = '1'; }
-        initScratch();
-    }
-
-    canvas.addEventListener('pointerdown', e => { scratching = true; scratchAt(e); });
-    canvas.addEventListener('pointermove', e => { if (scratching) { scratchAt(e); checkRevealed(); } });
-    window.addEventListener('pointerup', () => scratching = false);
-    window.addEventListener('resize', () => { if (!revealed) initScratch(); });
-    initScratch();
 
     // ---------- Countdown ----------
     // Waleema reception on 18 Nov 2026, 1:00 PM IST.
