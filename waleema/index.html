@@ -504,6 +504,117 @@
         .section { opacity: 1 !important; transform: none !important; }
         #scratchCanvas { display: none; }
     }
+
+    /* ---------------- Personalization ---------------- */
+    .greeting {
+        text-align: center;
+        background: linear-gradient(180deg, rgba(184,150,90,.10), rgba(184,150,90,.02));
+        border: 1px solid rgba(184,150,90,.35);
+        border-radius: 12px;
+        padding: 20px 24px;
+        margin: 0 auto 24px;
+        max-width: 460px;
+    }
+    .greet-salaam {
+        font-family: 'Amiri', serif;
+        color: var(--gold-2);
+        font-size: 14px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+    }
+    .greet-name {
+        font-family: 'Great Vibes', cursive;
+        color: var(--emerald);
+        font-size: clamp(28px, 8vw, 40px);
+        line-height: 1.1;
+        margin: 4px 0 6px;
+    }
+    .greet-msg {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-size: 15px;
+        color: #6a5a4a;
+    }
+    .name-ar {
+        display: block;
+        font-family: 'Amiri', serif;
+        color: var(--emerald);
+        opacity: .8;
+        font-size: clamp(18px, 4.5vw, 22px);
+        line-height: 1.4;
+        margin: 2px 0 6px;
+        direction: rtl;
+    }
+    .prog-title, .contact-title {
+        text-align: center;
+        font-family: 'Marcellus', serif;
+        font-size: 13px;
+        letter-spacing: 5px;
+        color: var(--gold-2);
+        text-transform: uppercase;
+        margin-bottom: 16px;
+    }
+    .prog-list {
+        max-width: 380px;
+        margin: 0 auto;
+    }
+    .prog-row {
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        gap: 14px;
+        padding: 9px 0;
+        border-bottom: 1px dashed rgba(184,150,90,.3);
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 16px;
+        color: var(--ink);
+        text-align: left;
+    }
+    .prog-row:last-child { border-bottom: none; }
+    .prog-row .time {
+        font-family: 'Marcellus', serif;
+        color: var(--emerald);
+        letter-spacing: 1px;
+        text-align: right;
+        font-size: 13px;
+    }
+    .contact-list {
+        display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+    }
+    .contact-list a {
+        display: inline-flex; align-items: center; gap: 6px;
+        padding: 10px 18px;
+        border: 1px solid var(--gold-2);
+        border-radius: 999px;
+        text-decoration: none;
+        color: var(--emerald);
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 15px;
+        background: rgba(255,255,255,.5);
+        transition: transform .2s ease, background .2s ease;
+    }
+    .contact-list a:hover { transform: translateY(-2px); background: rgba(184,150,90,.12); }
+    .dress-code {
+        text-align: center;
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-size: 16px;
+        color: #6a5a4a;
+        margin-top: 14px;
+        letter-spacing: 1px;
+    }
+    .hashtag {
+        text-align: center;
+        font-family: 'Marcellus', serif;
+        font-size: 12px;
+        letter-spacing: 3px;
+        color: var(--gold-2);
+        margin-top: 10px;
+    }
+    .btn.whatsapp {
+        background: linear-gradient(160deg, #25d366, #128c7e);
+        color: #fff;
+        border-color: #128c7e;
+    }
 </style>
 </head>
 <body>
@@ -526,6 +637,12 @@
         <span class="corner br"></span>
 
         <div class="inner">
+            <section class="section greeting" id="greeting" hidden>
+                <p class="greet-salaam">Assalamu Alaikum</p>
+                <p class="greet-name">Dear <span id="guestName"></span></p>
+                <p class="greet-msg">We would be honoured by your presence, InshaAllah</p>
+            </section>
+
             <section class="section">
                 <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
                 <div class="bismillah-en">In the name of Allah, the Most Gracious, the Most Merciful</div>
@@ -542,16 +659,27 @@
             <div class="ornament"><span class="line"></span><span class="icon">✦</span><span class="line"></span></div>
 
             <section class="section">
+                <p class="ayah">هُنَّ لِبَاسٌ لَّكُمْ وَأَنتُمْ لِبَاسٌ لَّهُنَّ</p>
+                <p class="ayah-en">“They are a garment for you, and you are a garment for them.”</p>
+                <p class="ayah-ref">— Qur'an 2:187 · Surah Al-Baqarah</p>
+            </section>
+
+            <div class="ornament"><span class="line"></span><span class="icon">✦</span><span class="line"></span></div>
+
+            <section class="section">
                 <p class="invite-line">Bismillahir Rahmanir Raheem</p>
-                <p class="host">Mr. Abdul Mukim</p>
-                <p class="invite-line" style="margin-top:6px">joyfully invites you to the Waleema celebrating the union of</p>
+                <p class="host">Bushra Hidayat Ullah</p>
+                <p class="son-of" style="margin-top:2px;margin-bottom:10px">(W/o. Marhoom Mohd. Hidayat Ullah)</p>
+                <p class="invite-line">cordially requests the honour of your presence at the Waleema, In Shaa Allah, of her aziz son</p>
 
                 <div class="names">
-                    <span class="name-bride">Shaista</span>
+                    <span class="name-bride">Mohd. Ashhar Ullah</span>
+                    <span class="name-ar">محمد اظہر اللہ</span>
                     <span class="weds">weds</span>
-                    <span class="name-groom">Mohd. Ashhar Ullah</span>
+                    <span class="name-groom">Shaista</span>
+                    <span class="name-ar">شائستہ</span>
                 </div>
-                <p class="son-of">(S/o. Late Mohd. Hidayat Ullah)</p>
+                <p class="son-of">(D/o. Mr. Abdul Mukim)</p>
 
                 <!-- Floral spray (rose-gold + burgundy) -->
                 <svg class="floral-spray" viewBox="0 0 300 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -601,7 +729,7 @@
                     </div>
                     <canvas id="scratchCanvas"></canvas>
                 </div>
-                <p class="scratch-hint">✧ Drag across to reveal ✧</p>
+                <p class="scratch-hint" id="scratchHint">✲ Drag across to reveal ✲</p>
 
                 <div class="countdown" id="countdown" aria-label="Countdown to the Waleema">
                     <div class="cd-box"><div class="cd-num" id="cdD">--</div><div class="cd-lbl">Days</div></div>
@@ -627,9 +755,23 @@
                         🗓 Add to Calendar
                     </a>
                     <a class="btn ghost" id="shareBtn" href="#">
-                        ✧ Share
+                        ✲ Share
                     </a>
                 </div>
+            </section>
+
+            <div class="ornament"><span class="line"></span><span class="icon">✦</span><span class="line"></span></div>
+
+            <section class="section">
+                <p class="prog-title">Programme</p>
+                <div class="prog-list">
+                    <div class="prog-row"><span class="time">12:30 PM</span><span>Guest Welcome</span></div>
+                    <div class="prog-row"><span class="time">01:00 PM</span><span>Waleema Reception</span></div>
+                    <div class="prog-row"><span class="time">01:30 PM</span><span>Dawat-e-Waleema (Lunch)</span></div>
+                    <div class="prog-row"><span class="time">03:00 PM</span><span>Dua &amp; Blessings</span></div>
+                    <div class="prog-row"><span class="time">03:30 PM</span><span>Rukhsati</span></div>
+                </div>
+                <p class="dress-code">✲ Traditional attire · Soft pastels ✲</p>
             </section>
 
             <div class="ornament"><span class="line"></span><span class="icon">❁</span><span class="line"></span></div>
@@ -638,6 +780,7 @@
                 <p class="dua">“May Allah bless this union with love, mercy, understanding and barakah, and may He make their journey together a source of peace and happiness. Ameen.”</p>
                 <p class="footer-note" style="margin-top:16px">Please remember us in your duas</p>
                 <p class="closing">A special day,<br/>a beautiful beginning,<br/><em>InshaAllah.</em></p>
+                <p class="hashtag">#AshharWedsShaista · #WaleemaMubarak2026</p>
             </section>
         </div>
     </article>
@@ -652,6 +795,19 @@
 
 <script>
 (() => {
+    // ---------- Personalized greeting via ?to= URL parameter ----------
+    try {
+        const guest = new URLSearchParams(location.search).get('to');
+        if (guest) {
+            const nameEl = document.getElementById('guestName');
+            const box    = document.getElementById('greeting');
+            if (nameEl && box) {
+                nameEl.textContent = decodeURIComponent(guest.replace(/\+/g, ' '));
+                box.hidden = false;
+            }
+        }
+    } catch(_) {}
+
     const envelope = document.getElementById('envelope');
     const cardWrap = document.getElementById('cardWrap');
     const petals   = document.getElementById('petals');
@@ -774,6 +930,8 @@
             canvas.style.transition = 'opacity .6s ease';
             canvas.style.opacity = '0';
             setTimeout(()=> canvas.style.display='none', 700);
+            const hint = document.getElementById('scratchHint');
+            if (hint) { hint.style.transition = 'opacity .5s ease'; hint.style.opacity = '0'; setTimeout(()=> hint.style.display = 'none', 500); }
             spawnPetals(20);
         }
     }
@@ -781,6 +939,8 @@
         revealed = false;
         canvas.style.display = '';
         canvas.style.opacity = '1';
+        const hint = document.getElementById('scratchHint');
+        if (hint) { hint.style.display = ''; hint.style.opacity = '1'; }
         initScratch();
     }
 
