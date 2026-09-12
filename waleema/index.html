@@ -750,9 +750,6 @@
                     <a class="btn ghost" id="calBtn" target="_blank" rel="noopener" href="#">
                         🗓 Add to Calendar
                     </a>
-                    <a class="btn ghost" id="shareBtn" href="#">
-                        ✲ Share
-                    </a>
                 </div>
             </section>
 
@@ -901,25 +898,6 @@
         + '&details=' + encodeURIComponent('Waleema reception. Please join us for the celebration and duas.')
         + '&location=' + encodeURIComponent('Kings Lawn, near Humlog Villa, Nagpur');
     calBtn.href = calUrl;
-
-    // ---------- Share ----------
-    const shareBtn = document.getElementById('shareBtn');
-    shareBtn.addEventListener('click', async (e) => {
-        e.preventDefault();
-        const data = {
-            title: 'Waleema Invitation',
-            text: 'Waleema of Shaista & Mohd. Ashhar Ullah — 18 November 2026. Please join us for the celebration.',
-            url: location.href
-        };
-        try {
-            if (navigator.share) await navigator.share(data);
-            else {
-                await navigator.clipboard.writeText(data.text + ' ' + data.url);
-                shareBtn.textContent = '✓ Link Copied';
-                setTimeout(()=> shareBtn.textContent = '✧ Share', 2000);
-            }
-        } catch(_) {}
-    });
 })();
 </script>
 </body>
