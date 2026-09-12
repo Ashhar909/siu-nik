@@ -14,20 +14,32 @@
     html, body { height: 100%; }
     body {
         font-family: 'Cormorant Garamond', serif;
-        color: #f7f0dc;
+        color: #3d3a45;
         background:
-            radial-gradient(1200px 800px at 20% 10%, #113b2e 0%, transparent 60%),
-            radial-gradient(1000px 700px at 80% 90%, #4a1229 0%, transparent 55%),
-            linear-gradient(160deg, #0a1f19 0%, #1a1b23 55%, #240b18 100%);
+            radial-gradient(1200px 800px at 20% 10%, #d6e2c8 0%, transparent 60%),
+            radial-gradient(1000px 700px at 80% 90%, #e2d5ef 0%, transparent 55%),
+            linear-gradient(160deg, #f5f2ea 0%, #ece4f5 55%, #eef2e6 100%);
         min-height: 100vh;
-        display: flex; align-items: center; justify-content: center;
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         padding: 40px 20px;
         overflow-x: hidden;
+    }
+    /* On short screens (most phones in portrait), stop vertical centering
+       so top content is never pushed above the viewport. */
+    @media (max-height: 820px), (max-width: 560px) {
+        body {
+            justify-content: flex-start;
+            padding: 24px 16px 40px;
+        }
     }
     body::before {
         content: '';
         position: fixed; inset: 0;
-        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'><g fill='none' stroke='%23d4af6a' stroke-width='0.6' opacity='0.12'><path d='M60 5 L75 35 L110 40 L82 62 L92 100 L60 82 L28 100 L38 62 L10 40 L45 35 Z'/><circle cx='60' cy='60' r='24'/><circle cx='60' cy='60' r='12'/></g></svg>");
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'><g fill='none' stroke='%238a6a3a' stroke-width='0.6' opacity='0.18'><path d='M60 5 L75 35 L110 40 L82 62 L92 100 L60 82 L28 100 L38 62 L10 40 L45 35 Z'/><circle cx='60' cy='60' r='24'/><circle cx='60' cy='60' r='12'/></g></svg>");
         background-size: 180px 180px;
         pointer-events: none;
     }
@@ -40,14 +52,14 @@
     .bismillah {
         font-family: 'Amiri', serif;
         font-size: 28px;
-        color: #f0d99a;
+        color: #8a6a3a;
         margin-bottom: 6px;
     }
     .sub {
         font-family: 'Montserrat', sans-serif;
         letter-spacing: 5px;
         font-size: 10px;
-        color: #d4af6a;
+        color: #8a6a3a;
         text-transform: uppercase;
         margin-bottom: 26px;
     }
@@ -55,8 +67,8 @@
         font-family: 'Great Vibes', cursive;
         font-size: clamp(38px, 11vw, 68px);
         line-height: 1.05;
-        color: #f0d99a;
-        text-shadow: 0 2px 20px rgba(212,175,106,.25);
+        color: #6f5b95;
+        text-shadow: 0 2px 20px rgba(139,109,176,.25);
         word-break: normal;
         overflow-wrap: break-word;
         padding: 0 4px;
@@ -64,7 +76,7 @@
     .amp {
         display: block;
         font-size: clamp(24px, 6vw, 40px);
-        color: #d4af6a;
+        color: #b8965a;
         margin: 4px 0;
     }
     .floral {
@@ -72,7 +84,7 @@
         margin: 14px auto 6px;
         width: min(320px, 72%);
         height: auto;
-        opacity: .9;
+        opacity: .95;
     }
     .floral.bottom { transform: rotate(180deg); margin: 6px auto 14px; }
     .tag {
@@ -80,8 +92,8 @@
         font-style: italic;
         font-size: clamp(15px, 4.4vw, 20px);
         margin: 18px 0 30px;
-        color: #ffe8b0;
-        opacity: .9;
+        color: #5a4d3a;
+        opacity: .95;
         padding: 0 6px;
     }
     .divider {
@@ -89,8 +101,8 @@
         gap: 14px;
         margin: 8px 0 30px;
     }
-    .divider .line { flex: 0 0 90px; height: 1px; background: linear-gradient(90deg, transparent, #d4af6a, transparent); }
-    .divider .icon { color: #d4af6a; font-family: 'Amiri', serif; font-size: 20px; }
+    .divider .line { flex: 0 0 90px; height: 1px; background: linear-gradient(90deg, transparent, #b8965a, transparent); }
+    .divider .icon { color: #8a6a3a; font-family: 'Amiri', serif; font-size: 20px; }
 
     .cards {
         display: grid;
@@ -111,44 +123,47 @@
         color: inherit;
         padding: 32px 22px;
         border-radius: 14px;
-        border: 1px solid #d4af6a;
-        background: linear-gradient(160deg, rgba(15,58,46,.75), rgba(10,44,34,.75));
+        border: 1px solid #b8965a;
+        background: linear-gradient(160deg, rgba(111,138,94,.22), rgba(139,168,121,.14));
         backdrop-filter: blur(6px);
         transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
         position: relative;
         overflow: hidden;
+        box-shadow: 0 6px 18px rgba(111,138,94,.15);
     }
     .card.waleema {
-        background: linear-gradient(160deg, rgba(122,34,71,.75), rgba(74,18,41,.75));
+        background: linear-gradient(160deg, rgba(139,109,176,.22), rgba(168,148,201,.14));
+        box-shadow: 0 6px 18px rgba(139,109,176,.15);
     }
     .card:hover {
         transform: translateY(-6px);
-        box-shadow: 0 20px 40px rgba(0,0,0,.45);
-        border-color: #ffe8b0;
+        box-shadow: 0 20px 40px rgba(90,70,110,.25);
+        border-color: #8a6a3a;
     }
     .card .icon {
         font-family: 'Amiri', serif;
         font-size: 28px;
-        color: #f0d99a;
+        color: #8a6a3a;
         margin-bottom: 8px;
     }
     .card .label {
         font-family: 'Marcellus', serif;
         letter-spacing: 6px;
         font-size: 13px;
-        color: #d4af6a;
+        color: #8a6a3a;
         text-transform: uppercase;
     }
     .card .title {
         font-family: 'Great Vibes', cursive;
         font-size: 38px;
-        color: #f7f0dc;
+        color: #4d6444;
         margin: 4px 0 10px;
     }
+    .card.waleema .title { color: #6f5b95; }
     .card .date {
         font-family: 'Cormorant Garamond', serif;
         font-size: 17px;
-        color: #ffe8b0;
+        color: #4a4238;
         font-style: italic;
     }
     .card .arrow {
@@ -157,9 +172,9 @@
         font-family: 'Montserrat', sans-serif;
         font-size: 10px;
         letter-spacing: 3px;
-        color: #f0d99a;
+        color: #8a6a3a;
         text-transform: uppercase;
-        border-bottom: 1px solid #d4af6a;
+        border-bottom: 1px solid #b8965a;
         padding-bottom: 3px;
     }
     footer {
@@ -167,7 +182,7 @@
         font-family: 'Montserrat', sans-serif;
         font-size: 10px;
         letter-spacing: 3px;
-        color: #b8894a;
+        color: #8a6a3a;
         text-transform: uppercase;
     }
 </style>
@@ -185,13 +200,13 @@
 
         <!-- Floral spray -->
         <svg class="floral" viewBox="0 0 300 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <g fill="none" stroke="#d4af6a" stroke-width="1" stroke-linecap="round">
+            <g fill="none" stroke="#b8965a" stroke-width="1" stroke-linecap="round">
                 <path d="M150 30 Q 120 22 90 28 Q 60 34 30 24"/>
                 <path d="M150 30 Q 180 22 210 28 Q 240 34 270 24"/>
                 <path d="M150 30 Q 140 44 120 50"/>
                 <path d="M150 30 Q 160 44 180 50"/>
             </g>
-            <g fill="#d4af6a" opacity="0.75">
+            <g fill="#b8965a" opacity="0.85">
                 <circle cx="150" cy="30" r="5"/>
                 <circle cx="90" cy="28" r="3.2"/>
                 <circle cx="30" cy="24" r="2.8"/>
@@ -200,14 +215,14 @@
                 <circle cx="120" cy="50" r="2.4"/>
                 <circle cx="180" cy="50" r="2.4"/>
             </g>
-            <g fill="#f0d99a" opacity="0.6">
+            <g fill="#d9b878" opacity="0.75">
                 <circle cx="150" cy="30" r="2"/>
                 <ellipse cx="60" cy="30" rx="5" ry="2" transform="rotate(-20 60 30)"/>
                 <ellipse cx="240" cy="30" rx="5" ry="2" transform="rotate(20 240 30)"/>
                 <ellipse cx="135" cy="42" rx="4" ry="1.6" transform="rotate(-30 135 42)"/>
                 <ellipse cx="165" cy="42" rx="4" ry="1.6" transform="rotate(30 165 42)"/>
             </g>
-            <g fill="#8fa87e" opacity="0.55">
+            <g fill="#6f8a5e" opacity="0.7">
                 <ellipse cx="75" cy="32" rx="5" ry="2.2" transform="rotate(-25 75 32)"/>
                 <ellipse cx="105" cy="26" rx="5" ry="2.2" transform="rotate(15 105 26)"/>
                 <ellipse cx="45" cy="22" rx="5" ry="2.2" transform="rotate(-15 45 22)"/>
@@ -226,14 +241,14 @@
                 <div class="icon">☾</div>
                 <div class="label">Ceremony I</div>
                 <div class="title">Nikah</div>
-                <div class="date">15 November 2026 · After Maghrib</div>
+                <div class="date">15 November 2026 · Mumbai<br/><span style="font-size:14px;opacity:.85">After Maghrib</span></div>
                 <span class="arrow">Open Invitation →</span>
             </a>
             <a class="card waleema" href="waleema/">
                 <div class="icon">✦</div>
                 <div class="label">Ceremony II</div>
                 <div class="title">Waleema</div>
-                <div class="date">18 November 2026</div>
+                <div class="date">18 November 2026 · Nagpur<br/><span style="font-size:14px;opacity:.85">Kings Lawn</span></div>
                 <span class="arrow">Open Invitation →</span>
             </a>
         </div>
